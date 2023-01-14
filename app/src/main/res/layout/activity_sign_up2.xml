@@ -108,6 +108,7 @@
             android:backgroundTint="@null"
             android:hint="Enter your full name here."
             android:textSize="15dp"
+            android:inputType="number"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent" />
@@ -142,6 +143,7 @@
             android:backgroundTint="@null"
             android:hint="Enter your email address here."
             android:textSize="15dp"
+            android:inputType="number"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent" />
@@ -176,6 +178,7 @@
             android:backgroundTint="@null"
             android:hint="Enter your password here."
             android:textSize="15dp"
+            android:inputType="number"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent" />
