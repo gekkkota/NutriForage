@@ -26,8 +26,6 @@ public class SignUp extends AppCompatActivity {
     ProgressBar progressBar;
     TextView toSignIn;
 
-    FirebaseAuth mAuth;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,21 +50,10 @@ public class SignUp extends AppCompatActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), SignUp2.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-        mAuth = FirebaseAuth.getInstance();
-
-        btnNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                progressBar.setVisibility(View.VISIBLE);
-                String fullname = String.valueOf(editFullname.getText());
-                String email = String.valueOf(editEmail.getText());
-                String password = String.valueOf(editPassword.getText());
+                String fullname, email, password;
+                fullname = String.valueOf(editFullname.getText());
+                email = String.valueOf(editEmail.getText());
+                password = String.valueOf(editPassword.getText());
 
                 if(TextUtils.isEmpty(fullname)){
                     Toast.makeText(SignUp.this, "Full Name field is empty.", Toast.LENGTH_SHORT).show();
@@ -81,22 +68,12 @@ public class SignUp extends AppCompatActivity {
                     return;
                 }
 
-                mAuth.createUserWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                progressBar.setVisibility(View.GONE);
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(SignUp.this, "Sign Up Successful.",
-                                            Toast.LENGTH_SHORT).show();
-                                } else {
-                                    // If sign in fails, display a message to the user.
-                                    Toast.makeText(SignUp.this, "Authentication failed.",
-                                            Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
-
+                Intent intent = new Intent(getApplicationContext(), SignUp2.class);
+                intent.putExtra("keyfullname", fullname);
+                intent.putExtra("keyemail", email);
+                intent.putExtra("keypassword", password);
+                startActivity(intent);
+                finish();
             }
         });
     }
