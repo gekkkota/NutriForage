@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">NutriForagePractice</string>
+
+
+    <string name="home_text">Home</string>
+    <string name="log_text">Food Log</string>
+    <string name="camera_text">Camera</string>
+    <string name="list_text">Shopping List</string>
+    <string name="profile_text">Profile</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

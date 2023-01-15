@@ -4,9 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".UserDashboard"
+    android:background="@drawable/home_bg"
     android:orientation="vertical"
-    android:background="@drawable/home_bg">
+    >
+
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -36,6 +40,26 @@
 
 
         </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/body_container">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="10dp"
+            android:elevation="2dp"
+            app:menu="@menu/item_menu"
+            android:background="@drawable/round_corner"
+            app:itemRippleColor="@android:color/transparent"
+            app:itemIconSize="30dp"
+            app:labelVisibilityMode="unlabeled"
+            app:itemIconTint="@drawable/item_selector"
+            android:id="@+id/bottom_navigation"/>
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -243,27 +267,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:layout_marginLeft="20dp"
-                android:background="#55ffffff">
+                android:layout_marginLeft="20dp">
 
                 <LinearLayout
                     android:id="@+id/featured_background"
                     android:layout_width="170dp"
                     android:layout_height="280dp"
-                    android:background="@drawable/home_bg"
-                    android:layout_margin="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/bg_default_input"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="All food recipies available"
-                        android:textSize="24dp"
                         android:layout_margin="10dp"
-                        android:textColor="@color/black"
-                        android:layout_marginTop="50dp"
-                        android:textAllCaps="true"
                         android:layout_marginLeft="10dp"
+                        android:layout_marginTop="50dp"
+                        android:text="All food recipies available"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="24dp"
                         android:textStyle="bold">
 
                     </TextView>
@@ -282,13 +308,11 @@
                     android:layout_width="280dp"
                     android:layout_height="280dp"
                     android:layout_toRightOf="@+id/featured_background"
-                    android:background="@drawable/unknown_icon"
+                    android:background="@drawable/bg_default_input"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp">
 
                 </ImageView>
-
-
 
 
             </RelativeLayout>
@@ -297,7 +321,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginTop="30dp"
                 android:padding="20dp">
 
                 <RelativeLayout
@@ -361,7 +384,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="0dp"
                 android:padding="20dp">
 
                 <RelativeLayout
@@ -388,7 +411,6 @@
 
                     </TextView>
 
-
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -403,6 +425,7 @@
                             android:layout_marginTop="20dp"
                             android:layout_width="350dp"
                             android:layout_height="150dp"
+                            android:layout_marginBottom="60dp"
                             android:background="@drawable/bg_default_input">
 
                             <ImageView
@@ -428,6 +451,10 @@
         </LinearLayout>
 
     </ScrollView>
+
+
+
+    </RelativeLayout>
 
 
 
