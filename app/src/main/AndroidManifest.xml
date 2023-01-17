@@ -19,7 +19,7 @@
             android:exported="true" />
 
         <activity
-            android:name=".UserDashboard"
+            android:name=".SplashScreen"
             android:exported="true"
             android:theme="@style/SplashScreen">
         <intent-filter>
@@ -58,7 +58,7 @@
         </activity>
 
         <activity
-            android:name=".SplashScreen"
+            android:name=".UserDashboard"
             android:exported="true">
 
             <meta-data
