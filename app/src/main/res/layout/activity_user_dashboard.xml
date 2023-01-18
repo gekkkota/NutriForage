@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".UserDashboard"
-    android:background="@drawable/home_bg"
+    android:background="@color/bgcolor1"
     android:orientation="vertical"
     >
 
@@ -53,7 +53,7 @@
             android:layout_margin="10dp"
             android:elevation="2dp"
             app:menu="@menu/item_menu"
-            android:background="@drawable/round_corner"
+            android:background="@drawable/round_corner_green"
             app:itemRippleColor="@android:color/transparent"
             app:itemIconSize="30dp"
             app:labelVisibilityMode="unlabeled"
@@ -136,15 +136,18 @@
                         >
 
                         <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/qotd_1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginEnd="0dp"
+                            android:layout_marginBottom="0dp"
                             android:adjustViewBounds="true"
                             android:scaleType="fitCenter"
-                            android:layout_margin="0dp"
-                            android:layout_centerInParent="true"
                             android:src="@drawable/qotd_1"
-                            android:id="@+id/qotd_1"
-                            app:shapeAppearanceOverlay="@style/roundimageview"/>
+                            app:shapeAppearanceOverlay="@style/roundimageview" />
 
                     </RelativeLayout>
 
@@ -286,10 +289,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
+                        android:layout_marginTop="10dp"
                         android:layout_marginLeft="10dp"
-                        android:layout_marginTop="50dp"
-                        android:text="All food recipies available"
+                        android:text="Featured Food Recipes available"
                         android:textAllCaps="true"
                         android:textColor="@color/black"
                         android:textSize="24dp"
@@ -300,22 +302,22 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
+                        android:layout_margin="10dp"
+                        android:textSize="12sp"
                         android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.">
 
                     </TextView>
 
                 </LinearLayout>
 
-                <ImageView
-                    android:layout_width="280dp"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/featured_recycler"
+                    android:layout_width="match_parent"
                     android:layout_height="280dp"
-                    android:layout_toRightOf="@+id/featured_background"
-                    android:background="@drawable/bg_default_input"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="10dp">
-
-                </ImageView>
+                    android:layout_centerInParent="true"
+                    android:layout_marginBottom="10dp"
+                    android:layout_toRightOf="@id/featured_background"
+                    app:cardCornerRadius="5dp" />
 
 
             </RelativeLayout>
@@ -353,31 +355,20 @@
 
                 </RelativeLayout>
 
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/most_viewed_recycler"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp" />
+
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center">
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <RelativeLayout
-                            android:layout_marginTop="20dp"
-                            android:layout_width="350dp"
-                            android:layout_height="150dp"
-                            android:background="@drawable/bg_default_input">
-
-                            <ImageView
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
-                                android:src="@drawable/unknown_icon"
-                                android:layout_centerInParent="true">
-
-                            </ImageView>
-
-                        </RelativeLayout>
-
-                    </LinearLayout>
+                        android:layout_height="wrap_content"/>
 
                 </RelativeLayout>
 
@@ -420,28 +411,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center">
+
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"/>
 
-                        <RelativeLayout
-                            android:layout_marginTop="20dp"
-                            android:layout_width="350dp"
-                            android:layout_height="150dp"
-                            android:layout_marginBottom="60dp"
-                            android:background="@drawable/bg_default_input">
-
-                            <ImageView
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
-                                android:src="@drawable/unknown_icon"
-                                android:layout_centerInParent="true">
-
-                            </ImageView>
-
-                        </RelativeLayout>
-
-                    </LinearLayout>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/food_recycler"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="50dp"/>
 
                 </RelativeLayout>
 

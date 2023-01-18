@@ -3,7 +3,7 @@
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_200">#000000</color>
     <color name="teal_700">#FF018786</color>
     <color name="gray">#E8ECF4</color>
 
@@ -16,4 +16,8 @@
     <color name="card_3">#72856A</color>
     <color name="card_4">#72856A</color>
     <color name="card_5">#FF72856A</color>
+
+    <color name="bgcolor1">#678D58</color>
+    <color name="bgcolor2">#A6C48A</color>
+    <color name="bgcolor3">#F6E7CB</color>
 </resources>

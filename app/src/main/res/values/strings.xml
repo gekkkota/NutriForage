@@ -10,4 +10,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!-- Recipes!!! -->
+
+    <string name="chicken_adobo_text">Authentic chicken adobo is usually made with chicken thighs and legs, served over white rice.</string>
+
 </resources>
