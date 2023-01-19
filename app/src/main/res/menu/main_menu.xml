@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/drawer_home"
+            android:icon="@drawable/home_icon"
+            android:title="HOME" />
+
+        <item
+            android:id="@+id/drawer_search"
+            android:icon="@drawable/search_icon"
+            android:title="SEARCH" />
+
+        <item
+            android:id="@+id/drawer_category"
+            android:icon="@drawable/category_icon"
+            android:title="ALL CATEGORIES" />
+
+        <item
+            android:id="@+id/drawer_log"
+            android:icon="@drawable/log_icon"
+            android:title="FOOD LOG" />
+
+        <item
+            android:id="@+id/drawer_camera"
+            android:icon="@drawable/camera_icon"
+            android:title="CAMERA" />
+
+        <item
+            android:id="@+id/drawer_list"
+            android:icon="@drawable/list_icon"
+            android:title="SHOPPING LIST" />
+
+
+    </group>
+
+
+    <item android:title="Profile">
+
+        <menu>
+
+            <item
+                android:id="@+id/drawer_login"
+                android:icon="@drawable/login_icon"
+                android:title="LOG-IN" />
+
+            <item
+                android:id="@+id/drawer_profile"
+                android:icon="@drawable/profile_icon"
+                android:title="PROFILE" />
+
+            <item
+                android:id="@+id/drawer_logout"
+                android:icon="@drawable/logout_icon"
+                android:title="LOGOUT" />
+
+        </menu>
+
+    </item>
+
+    <item android:title="Communicate">
+
+        <menu>
+            <group android:checkableBehavior="none">
+
+                <item
+
+                    android:id="@+id/drawer_share"
+                    android:icon="@drawable/share_icon"
+                    android:title="SHARE" />
+
+                <item
+
+                    android:id="@+id/drawer_rate"
+                    android:icon="@drawable/rate_icon"
+                    android:title="SHARE" />
+
+            </group>
+
+
+        </menu>
+
+
+    </item>
+
+</menu>
