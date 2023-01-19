@@ -3,6 +3,7 @@ package com.example.nutriforagepractice;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -15,6 +16,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class SignUp2 extends AppCompatActivity {
 
@@ -23,6 +29,7 @@ public class SignUp2 extends AppCompatActivity {
     ProgressBar progressBar;
 
     FirebaseAuth mAuth;
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://nutriforage-3799b-default-rtdb.firebaseio.com");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,17 +57,44 @@ public class SignUp2 extends AppCompatActivity {
                 String weight = String.valueOf(editWeight.getText());
 
                 if(TextUtils.isEmpty(age)){
-                    Toast.makeText(SignUp2.this, "Full Name field is empty.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUp2.this, "Age field is empty.", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if(TextUtils.isEmpty(height)){
-                    Toast.makeText(SignUp2.this, "Email field is empty.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUp2.this, "Height field is empty.", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if(TextUtils.isEmpty(weight)){
-                    Toast.makeText(SignUp2.this, "Password field is empty.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUp2.this, "Weight field is empty.", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
+                databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        //check if email is already registered
+                        if(snapshot.hasChild(email)){
+                            Toast.makeText(SignUp2.this, "Email is already registered.", Toast.LENGTH_SHORT).show();
+                        } else {
+                            //send data to firebase realtime database
+                            databaseReference.child("Users").child(email).child("Full Name").setValue(fullname);
+                            databaseReference.child("Users").child(email).child("Password").setValue(password);
+                            databaseReference.child("Users").child(email).child("Age").setValue(age);
+                            databaseReference.child("Users").child(email).child("Weight").setValue(height);
+                            databaseReference.child("Users").child(email).child("Height").setValue(weight);
+
+                            //sending data success
+                            Toast.makeText(SignUp2.this, "Sign Up Successful", Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(SignUp2.this, "Authentication failed.",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                });
 
                 mAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -70,6 +104,9 @@ public class SignUp2 extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(SignUp2.this, "Sign Up Successful.",
                                             Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(getApplicationContext(), SignIn.class);
+                                    startActivity(intent);
+                                    finish();
                                 } else {
                                     // If sign in fails, display a message to the user.
                                     Toast.makeText(SignUp2.this, "Authentication failed.",
