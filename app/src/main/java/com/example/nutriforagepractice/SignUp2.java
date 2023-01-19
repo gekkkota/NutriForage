@@ -29,7 +29,7 @@ public class SignUp2 extends AppCompatActivity {
     ProgressBar progressBar;
 
     FirebaseAuth mAuth;
-    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://nutriforage-3799b-default-rtdb.firebaseio.com");
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance("https://nutriforage-3799b-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
