@@ -7,11 +7,13 @@ import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,6 +25,7 @@ import com.example.nutriforagepractice.HelperClasses.HomeAdapter.FoodHelperClass
 import com.example.nutriforagepractice.HelperClasses.HomeAdapter.MostViewedAdapter;
 import com.example.nutriforagepractice.HelperClasses.HomeAdapter.MostViewedHelperClass;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 
@@ -33,6 +36,10 @@ public class UserDashboard extends AppCompatActivity {
     RecyclerView mostViewedRecycler;
     RecyclerView foodRecycler;
     RecyclerView.Adapter adapter;
+
+    //Drawer Menu
+    DrawerLayout drawerLayout;
+    NavigationView navigationViewbar;
 
 
 
@@ -93,6 +100,11 @@ public class UserDashboard extends AppCompatActivity {
         foodRecycler = findViewById(R.id.food_recycler);
 
         foodRecycler();
+
+        //Menu Hooks
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationViewbar = findViewById(R.id.navigation_view_bar);
+
     }
 
     private void foodRecycler() {
@@ -154,5 +166,11 @@ public class UserDashboard extends AppCompatActivity {
 
     }
 
+
+    public void callRetailerScreens(View view){
+
+        startActivity(new Intent(getApplicationContext(), SignIn.class));
+
+    }
 
 }

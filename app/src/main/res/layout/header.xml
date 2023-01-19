@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:orientation="vertical"
+    android:background="@drawable/home_bg"
+    android:gravity="bottom"
+    android:paddingLeft="15dp">
+
+    <TextView
+        android:id="@+id/menu_slogan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Just for the health of it!"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp" />
+
+    <ImageView
+        android:id="@+id/app_logo"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:src="@drawable/menu_nav_icon"
+        android:layout_above="@id/app_name" />
+
+    <TextView
+        android:id="@+id/app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/baloo"
+        android:text="Nutri Forage"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_above="@+id/menu_slogan"
+        android:textColor="@color/black"/>
+
+    <ImageView
+        android:layout_width="160dp"
+        android:layout_height="175dp"
+        android:src="@drawable/logo_black"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"/>
+
+
+
+</RelativeLayout>
