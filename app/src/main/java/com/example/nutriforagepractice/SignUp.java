@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -56,15 +57,28 @@ public class SignUp extends AppCompatActivity {
                 password = String.valueOf(editPassword.getText());
 
                 if(TextUtils.isEmpty(fullname)){
-                    Toast.makeText(SignUp.this, "Full Name field is empty.", Toast.LENGTH_SHORT).show();
+                    editFullname.setError("Full Name field is empty.");
+                    editFullname.requestFocus();
                     return;
                 }
                 if(TextUtils.isEmpty(email)){
-                    Toast.makeText(SignUp.this, "Email field is empty.", Toast.LENGTH_SHORT).show();
+                    editEmail.setError("Email field is empty.");
+                    editEmail.requestFocus();
+                    return;
+                }
+                if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+                    editEmail.setError("Entered email is not valid.");
+                    editEmail.requestFocus();
                     return;
                 }
                 if(TextUtils.isEmpty(password)){
-                    Toast.makeText(SignUp.this, "Password field is empty.", Toast.LENGTH_SHORT).show();
+                    editPassword.setError("Password field is empty.");
+                    editPassword.requestFocus();
+                    return;
+                }
+                if(password.length() < 6){
+                    editPassword.setError("Password must be 6 or more characters.");
+                    editPassword.requestFocus();
                     return;
                 }
 

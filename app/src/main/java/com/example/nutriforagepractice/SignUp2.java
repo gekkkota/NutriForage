@@ -30,7 +30,6 @@ public class SignUp2 extends AppCompatActivity {
 
     FirebaseAuth mAuth;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef = database.getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,56 +57,44 @@ public class SignUp2 extends AppCompatActivity {
                 String weight = String.valueOf(editWeight.getText());
 
                 if(TextUtils.isEmpty(age)){
-                    Toast.makeText(SignUp2.this, "Age field is empty.", Toast.LENGTH_SHORT).show();
+                    editAge.setError("Age field is empty.");
+                    editAge.requestFocus();
                     return;
                 }
                 if(TextUtils.isEmpty(height)){
-                    Toast.makeText(SignUp2.this, "Height field is empty.", Toast.LENGTH_SHORT).show();
+                    editHeight.setError("Height field is empty.");
+                    editHeight.requestFocus();
                     return;
                 }
                 if(TextUtils.isEmpty(weight)){
-                    Toast.makeText(SignUp2.this, "Weight field is empty.", Toast.LENGTH_SHORT).show();
+                    editWeight.setError("Weight field is empty.");
+                    editWeight.requestFocus();
                     return;
                 }
-
-                myRef.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        //check if email is already registered
-                        if(snapshot.hasChild(email)){
-                            Toast.makeText(SignUp2.this, "Email is already registered.", Toast.LENGTH_SHORT).show();
-                        } else {
-                            //send data to firebase realtime database
-                            myRef.child("Users").child(email).child("Full Name").setValue(fullname);
-                            myRef.child("Users").child(email).child("Password").setValue(password);
-                            myRef.child("Users").child(email).child("Age").setValue(age);
-                            myRef.child("Users").child(email).child("Weight").setValue(height);
-                            myRef.child("Users").child(email).child("Height").setValue(weight);
-
-                            //sending data success
-                            Toast.makeText(SignUp2.this, "Sign Up Successful", Toast.LENGTH_SHORT).show();
-                            finish();
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(SignUp2.this, "Authentication failed.",
-                                Toast.LENGTH_SHORT).show();
-                    }
-                });
 
                 mAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                progressBar.setVisibility(View.GONE);
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(SignUp2.this, "Sign Up Successful.",
-                                            Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(getApplicationContext(), SignIn.class);
-                                    startActivity(intent);
-                                    finish();
+                                    Users users = new Users(fullname, email, age, height, weight);
+
+                                    database.getReference("Users")
+                                            .child(mAuth.getCurrentUser().getUid())
+                                            .setValue(users).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    if(task.isSuccessful()){
+                                                        Toast.makeText(SignUp2.this, "Sign Up Successful.",
+                                                                Toast.LENGTH_SHORT).show();
+                                                        progressBar.setVisibility(View.GONE);
+                                                    } else {
+                                                        Toast.makeText(SignUp2.this, "Authentication failed.",
+                                                                Toast.LENGTH_SHORT).show();
+                                                        progressBar.setVisibility(View.GONE);
+                                                    }
+                                                }
+                                            });
                                 } else {
                                     // If sign in fails, display a message to the user.
                                     Toast.makeText(SignUp2.this, "Authentication failed.",
@@ -115,7 +102,6 @@ public class SignUp2 extends AppCompatActivity {
                                 }
                             }
                         });
-
             }
         });
     }
