@@ -29,7 +29,8 @@ public class SignUp2 extends AppCompatActivity {
     ProgressBar progressBar;
 
     FirebaseAuth mAuth;
-    DatabaseReference databaseReference = FirebaseDatabase.getInstance("https://nutriforage-3799b-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +70,7 @@ public class SignUp2 extends AppCompatActivity {
                     return;
                 }
 
-                databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
+                myRef.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         //check if email is already registered
@@ -77,11 +78,11 @@ public class SignUp2 extends AppCompatActivity {
                             Toast.makeText(SignUp2.this, "Email is already registered.", Toast.LENGTH_SHORT).show();
                         } else {
                             //send data to firebase realtime database
-                            databaseReference.child("Users").child(email).child("Full Name").setValue(fullname);
-                            databaseReference.child("Users").child(email).child("Password").setValue(password);
-                            databaseReference.child("Users").child(email).child("Age").setValue(age);
-                            databaseReference.child("Users").child(email).child("Weight").setValue(height);
-                            databaseReference.child("Users").child(email).child("Height").setValue(weight);
+                            myRef.child("Users").child(email).child("Full Name").setValue(fullname);
+                            myRef.child("Users").child(email).child("Password").setValue(password);
+                            myRef.child("Users").child(email).child("Age").setValue(age);
+                            myRef.child("Users").child(email).child("Weight").setValue(height);
+                            myRef.child("Users").child(email).child("Height").setValue(weight);
 
                             //sending data success
                             Toast.makeText(SignUp2.this, "Sign Up Successful", Toast.LENGTH_SHORT).show();
