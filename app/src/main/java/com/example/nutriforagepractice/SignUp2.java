@@ -29,7 +29,7 @@ public class SignUp2 extends AppCompatActivity {
     ProgressBar progressBar;
 
     FirebaseAuth mAuth;
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    FirebaseDatabase database = FirebaseDatabase.getInstance("https://nutriforage-3799b-default-rtdb.asia-southeast1.firebasedatabase.app/");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +88,10 @@ public class SignUp2 extends AppCompatActivity {
                                                         Toast.makeText(SignUp2.this, "Sign Up Successful.",
                                                                 Toast.LENGTH_SHORT).show();
                                                         progressBar.setVisibility(View.GONE);
+
+                                                        Intent intent = new Intent(getApplicationContext(), SignIn.class);
+                                                        startActivity(intent);
+                                                        finish();
                                                     } else {
                                                         Toast.makeText(SignUp2.this, "Authentication failed.",
                                                                 Toast.LENGTH_SHORT).show();
