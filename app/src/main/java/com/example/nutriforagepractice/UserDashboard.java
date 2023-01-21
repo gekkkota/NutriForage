@@ -9,10 +9,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -29,13 +32,17 @@ import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 
-public class UserDashboard extends AppCompatActivity {
+public class UserDashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+
+    //Variables
+    static final float END_SCALE = 0.7f;
 
     BottomNavigationView navigationView;
-    RecyclerView featuredRecycler;
-    RecyclerView mostViewedRecycler;
-    RecyclerView foodRecycler;
+    RecyclerView featuredRecycler, mostViewedRecycler, foodRecycler;
     RecyclerView.Adapter adapter;
+    ImageView menuIcon;
+    LinearLayout contentView;
 
     //Drawer Menu
     DrawerLayout drawerLayout;
@@ -45,7 +52,7 @@ public class UserDashboard extends AppCompatActivity {
 
     @SuppressLint("MissingInflatedId")
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_user_dashboard);
@@ -59,11 +66,11 @@ public class UserDashboard extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment fragment = null;
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
 
                     case R.id.nav_home:
                         startActivity(new Intent(getApplicationContext(), UserDashboard.class));
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(0, 0);
                         finish();
 
                     case R.id.nav_log:
@@ -91,59 +98,102 @@ public class UserDashboard extends AppCompatActivity {
         //Hooks
         featuredRecycler = findViewById(R.id.featured_recycler);
 
-        featuredRecycler();
-
         mostViewedRecycler = findViewById(R.id.most_viewed_recycler);
-
-        mostViewedRecycler();
 
         foodRecycler = findViewById(R.id.food_recycler);
 
+        menuIcon = findViewById(R.id.menu_icon);
+
+        contentView = findViewById(R.id.content);
+
+        //Recycler Views Function Calls
+        featuredRecycler();
+        mostViewedRecycler();
         foodRecycler();
+
+
 
         //Menu Hooks
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationViewbar = findViewById(R.id.navigation_view_bar);
 
-    }
-
-    private void foodRecycler() {
-
-        foodRecycler.setHasFixedSize(true);
-        foodRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-
-        ArrayList<FoodHelperClass> foodCategory = new ArrayList<>();
-
-        foodCategory.add(new FoodHelperClass(R.drawable.logo_black, "Vegan Foods", "Authentic chicken adobo is usually made with chicken thighs and legs, or a cut-up whole chicken served over white rice."));
-        foodCategory.add(new FoodHelperClass(R.drawable.meat_food, "Pork Meat Foods", "A ground pork and green bean dish cooked in coconut milk. Shrimp paste (bagoong) is used to enhance the flavor."));
-        foodCategory.add(new FoodHelperClass(R.drawable.chicken_food, "Chciken Meat Foods", "Savoury ginger-based broth soup, filled with sauteed tofu, green papaya and nutritious chilli pepper leaves."));
-
-
-        adapter = new FoodAdapter(foodCategory);
-        foodRecycler.setAdapter(adapter);
-
-        GradientDrawable gradient1 = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, new int[]{0xffeff400, 0xffaff600});
-    }
-
-    private void mostViewedRecycler() {
-
-
-            mostViewedRecycler.setHasFixedSize(true);
-            mostViewedRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-
-            ArrayList<MostViewedHelperClass> mostViewedRecipes = new ArrayList<>();
-
-            mostViewedRecipes.add(new MostViewedHelperClass(R.drawable.adobo_img, "Healthier Chicken Adobo Recipe", "Authentic chicken adobo is usually made with chicken thighs and legs, served over white rice."));
-            mostViewedRecipes.add(new MostViewedHelperClass(R.drawable.gising_img, "Gising-gising Recipe", "A ground pork and green bean dish cooked in coconut milk. Shrimp paste (bagoong) is used to enhance the flavor."));
-            mostViewedRecipes.add(new MostViewedHelperClass(R.drawable.tofu_tinola_img, "Tofu Tinola Recipe", "Savoury ginger-based broth soup, filled with sauteed tofu, green papaya and nutritious chilli pepper leaves."));
-
-
-            adapter = new MostViewedAdapter(mostViewedRecipes);
-            mostViewedRecycler.setAdapter(adapter);
-
-            GradientDrawable gradient1 = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, new int[]{0xffeff400, 0xffaff600});
+        navigationDrawer();
 
     }
+
+    //Navigation Drawer Functions
+    private void navigationDrawer() {
+
+        //Navigation Drawer
+        navigationViewbar.bringToFront();
+        navigationViewbar.setNavigationItemSelectedListener(this);
+        navigationViewbar.setCheckedItem(R.id.nav_home);
+
+        menuIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (drawerLayout.isDrawerVisible(GravityCompat.START))
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                else drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+
+        animateNavigationDrawer();
+
+    }
+
+    private void animateNavigationDrawer() {
+
+        //Optional for bg color
+        drawerLayout.setScrimColor(getResources().getColor(R.color.navdrawer1));
+        drawerLayout.addDrawerListener(new DrawerLayout.SimpleDrawerListener() {
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+
+                // Scale the View based on current slide offset
+                final float diffScaleOffset = slideOffset * (1 - END_SCALE);
+                final float offsetScale = 1 - diffScaleOffset;
+                contentView.setScaleX(offsetScale);
+                contentView.setScaleY(offsetScale);
+
+                // Translate the View, accounting for the scaled width
+                final float xOffset = drawerView.getWidth() * slideOffset;
+                final float xOffsetDiff = contentView.getWidth() * diffScaleOffset / 2;
+                final float xTranslation = xOffset - xOffsetDiff;
+                contentView.setTranslationX(xTranslation);
+
+            }
+        });
+
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        if (drawerLayout.isDrawerVisible(GravityCompat.START)){
+
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }else
+        super.onBackPressed();
+    }
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Fragment fragment = null;
+        switch (item.getItemId()){
+
+            case R.id.drawer_category:
+                startActivity(new Intent(getApplicationContext(),AllCategories.class));
+                break;
+
+            case R.id.drawer_home:
+                startActivity(new Intent(getApplicationContext(),UserDashboard.class));
+                break;
+                
+        }
+        return true;
+    }
+
+
 
     //Recipes CardView
 
@@ -165,12 +215,49 @@ public class UserDashboard extends AppCompatActivity {
         GradientDrawable gradient1 = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, new int[]{0xffeff400, 0xffaff600});
 
     }
+    private void mostViewedRecycler() {
 
 
-    public void callRetailerScreens(View view){
+        mostViewedRecycler.setHasFixedSize(true);
+        mostViewedRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+
+        ArrayList<MostViewedHelperClass> mostViewedRecipes = new ArrayList<>();
+
+        mostViewedRecipes.add(new MostViewedHelperClass(R.drawable.adobo_img, "Healthier Chicken Adobo Recipe", "Authentic chicken adobo is usually made with chicken thighs and legs, served over white rice."));
+        mostViewedRecipes.add(new MostViewedHelperClass(R.drawable.gising_img, "Gising-gising Recipe", "A ground pork and green bean dish cooked in coconut milk. Shrimp paste (bagoong) is used to enhance the flavor."));
+        mostViewedRecipes.add(new MostViewedHelperClass(R.drawable.tofu_tinola_img, "Tofu Tinola Recipe", "Savoury ginger-based broth soup, filled with sauteed tofu, green papaya and nutritious chilli pepper leaves."));
+
+
+        adapter = new MostViewedAdapter(mostViewedRecipes);
+        mostViewedRecycler.setAdapter(adapter);
+
+        GradientDrawable gradient1 = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, new int[]{0xffeff400, 0xffaff600});
+
+    }
+    private void foodRecycler() {
+
+        foodRecycler.setHasFixedSize(true);
+        foodRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+
+        ArrayList<FoodHelperClass> foodCategory = new ArrayList<>();
+
+        foodCategory.add(new FoodHelperClass(R.drawable.logo_black, "Vegan Foods", "Authentic chicken adobo is usually made with chicken thighs and legs, or a cut-up whole chicken served over white rice."));
+        foodCategory.add(new FoodHelperClass(R.drawable.meat_food, "Pork Meat Foods", "A ground pork and green bean dish cooked in coconut milk. Shrimp paste (bagoong) is used to enhance the flavor."));
+        foodCategory.add(new FoodHelperClass(R.drawable.chicken_food, "Chciken Meat Foods", "Savoury ginger-based broth soup, filled with sauteed tofu, green papaya and nutritious chilli pepper leaves."));
+
+
+        adapter = new FoodAdapter(foodCategory);
+        foodRecycler.setAdapter(adapter);
+
+        GradientDrawable gradient1 = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, new int[]{0xffeff400, 0xffaff600});
+    }
+
+
+
+
+    public void callRetailerScreens(View view) {
 
         startActivity(new Intent(getApplicationContext(), SignIn.class));
 
     }
-
 }

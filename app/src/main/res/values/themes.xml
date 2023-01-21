@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.NutriForagePractice" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimary">@color/bgcolor1</item>
+        <item name="colorPrimaryVariant">@color/bgcolor2</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -25,6 +25,18 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">20dp</item>
         <item name="color">@color/white</item>
+
+    </style>
+
+    <!-- Menu Style -->
+    <style name="navigationbarTheme">
+
+        <!-- Color of text and icon when SELECTED -->
+        <item name="colorPrimary">@color/bgcolor1</item>
+        <!-- Background color when SELECTED -->
+        <item name="colorControlHighlight">@color/black</item>
+
+
 
     </style>
 </resources>

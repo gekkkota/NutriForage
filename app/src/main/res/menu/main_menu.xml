@@ -75,7 +75,7 @@
 
                     android:id="@+id/drawer_rate"
                     android:icon="@drawable/rate_icon"
-                    android:title="SHARE" />
+                    android:title="RATE" />
 
             </group>
 

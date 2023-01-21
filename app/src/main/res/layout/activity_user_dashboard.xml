@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".UserDashboard"
-    tools:openDrawer="start"
+
     android:id="@+id/drawer_layout">
 
     <com.google.android.material.navigation.NavigationView
@@ -16,9 +16,11 @@
         android:background="@color/light_white"
         android:layout_gravity="start"
         app:headerLayout="@layout/header"
-        app:menu="@menu/main_menu"/>
+        app:menu="@menu/main_menu"
+        android:theme="@style/navigationbarTheme"/>
 
     <LinearLayout
+        android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/home_bg"
@@ -30,6 +32,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
+                android:id="@+id/menu_icon"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_centerVertical="true"
