@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -43,6 +44,7 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
     RecyclerView.Adapter adapter;
     ImageView menuIcon;
     LinearLayout contentView;
+    RelativeLayout searchBar;
 
     //Drawer Menu
     DrawerLayout drawerLayout;
@@ -58,6 +60,8 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         setContentView(R.layout.activity_user_dashboard);
 
         navigationView = findViewById(R.id.bottom_navigation);
+        //Search Bar
+        searchBar = findViewById(R.id.search_bar);
 
 
         navigationView.setSelectedItemId(R.id.nav_home);
@@ -110,6 +114,15 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         featuredRecycler();
         mostViewedRecycler();
         foodRecycler();
+
+        //Search Bar
+        searchBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(UserDashboard.this, "Search", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(UserDashboard.this, Search.class));
+            }
+        });
 
 
 
