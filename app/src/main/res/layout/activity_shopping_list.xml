@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context=".ShoppingList"
+    android:background="@drawable/home_bg">
+
+    <!--Item Input-->
+    <EditText
+        android:id="@+id/itemSL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:background="@drawable/sl_bg_edit_text"
+        android:padding="10dp"
+        android:inputType="text"
+        android:hint="Item"/>
+
+    <!--No. of Item Input-->
+    <EditText
+        android:id="@+id/desc_itemSL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:background="@drawable/sl_bg_edit_text"
+        android:padding="10dp"
+        android:inputType="number"
+        android:hint="Number of Items"
+        android:layout_gravity="start"/>
+
+    <!-- Button Save/Upload Data to Firebase Cloud Firestore -->
+
+    <Button
+        android:id="@+id/saveBtnSL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Add"
+        android:textAlignment="center"/>
+
+
+
+
+</LinearLayout>
