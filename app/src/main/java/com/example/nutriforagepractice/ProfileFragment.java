@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -13,33 +14,32 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 
-public class ProfileFragment extends Fragment {
+public class ProfileFragment extends AppCompatActivity {
 
     LinearLayout profile_settings, profile_help , profile_logout;
 
+    protected void onCreate(@Nullable Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_profile);
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        View view = inflater.inflate(R.layout.fragment_profile, container, false);
-
-        profile_settings = view.findViewById(R.id.profile_settings);
-        profile_help = view.findViewById(R.id.profile_helpcenter);
-        profile_logout = view.findViewById(R.id.profile_logOut);
+        profile_settings = findViewById(R.id.profile_settings);
+        profile_help = findViewById(R.id.profile_helpcenter);
+        profile_logout = findViewById(R.id.profile_logOut);
 
         profile_settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Settings", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getActivity(),Settings.class);
-                startActivity(intent);
+                Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(), Settings.class));
+
             }
         });
 
         profile_help.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Help Center", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Help", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(), Settings.class));
 
             }
         });
@@ -47,14 +47,22 @@ public class ProfileFragment extends Fragment {
         profile_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Logout", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Log Out", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(), Settings.class));
 
             }
         });
 
 
-        return view;
+
+
+
     }
+
+
+
+
+
 
 
 }

@@ -90,8 +90,9 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
                         break;
 
                     case R.id.nav_profile:
-                        fragment = new ProfileFragment();
-                        break;
+                        startActivity(new Intent(getApplicationContext(), ProfileFragment.class));
+                        overridePendingTransition(0, 0);
+                        finish();
                 }
                 getSupportFragmentManager().beginTransaction().replace(R.id.body_container, fragment).commit();
                 return true;

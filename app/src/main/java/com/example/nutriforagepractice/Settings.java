@@ -1,10 +1,12 @@
 package com.example.nutriforagepractice;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 
@@ -17,6 +19,7 @@ public class Settings extends AppCompatActivity {
     AutoCompleteTextView autoCompleteTextView;
     ArrayAdapter<String> adapter;
     SwitchCompat switchCompat;
+    Button editProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -30,6 +33,8 @@ public class Settings extends AppCompatActivity {
         autoCompleteTextView.setAdapter(adapter);
 
         switchCompat = (SwitchCompat) findViewById(R.id.toggle_switch);
+
+        editProfile = findViewById(R.id.edit_profile);
 
         switchCompat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -51,6 +56,15 @@ public class Settings extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String language = adapterView.getItemAtPosition(i).toString();
                 Toast.makeText(getApplicationContext(), "Language is set to " + language,Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        editProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "Edit Profile", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(), EditProfile.class));
+
             }
         });
 
