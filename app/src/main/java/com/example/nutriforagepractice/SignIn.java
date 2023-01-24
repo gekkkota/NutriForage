@@ -7,7 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,7 +25,7 @@ public class SignIn extends AppCompatActivity {
 
     TextInputEditText editEmail, editPassword;
     Button btnSignIn;
-    TextView toSignUp;
+    TextView toSignUp, resetPassword;
     ProgressBar progressBar;
 
     FirebaseAuth mAuth;
@@ -49,9 +51,20 @@ public class SignIn extends AppCompatActivity {
         editPassword = findViewById(R.id.password);
         btnSignIn = findViewById(R.id.submit_login);
         toSignUp = findViewById(R.id.to_signup);
+        resetPassword = findViewById(R.id.to_reset_password);
         progressBar = findViewById(R.id.progressBar);
 
         mAuth = FirebaseAuth.getInstance();
+
+        resetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ResetPassword.class);
+                startActivity(intent);
+                finish();
+
+            }
+        });
 
         toSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +74,10 @@ public class SignIn extends AppCompatActivity {
                 finish();
             }
         });
+
+
+
+
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -19,9 +19,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true" />
-        <activity
-            android:name=".CameraFragment"
-            android:exported="true" />
+
 
         <activity android:name=".Settings"
             android:exported="true"/>
@@ -81,6 +79,12 @@
                 android:value="" />
         </activity>
 
+        <activity
+            android:name=".CameraFragment"
+            android:exported="true" />
+
+        <activity android:name=".ResetPassword"
+            android:exported="true"/>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
