@@ -21,6 +21,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -28,7 +29,7 @@ public class ShoppingList extends AppCompatActivity {
 
     //Views
     EditText mItemSL, mDescriptionSL;
-    Button mSaveBtnSL;
+    Button mSaveBtnSL, mListBtnSL;
 
     ImageView backBtnList;
 
@@ -52,6 +53,7 @@ public class ShoppingList extends AppCompatActivity {
         mItemSL = findViewById(R.id.itemSL);
         mDescriptionSL = findViewById(R.id.desc_itemSL);
         mSaveBtnSL = findViewById(R.id.saveBtnSL);
+        mListBtnSL = findViewById(R.id.listBtnSL);
 
         //progress dialog
         pd = new ProgressDialog(this);
@@ -68,6 +70,15 @@ public class ShoppingList extends AppCompatActivity {
                 String description = mDescriptionSL.getText().toString().trim();
                 //function call to upload data
                 uploadData(title, description);
+            }
+        });
+
+        //click btn to start ListActivity
+        mListBtnSL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ShoppingList.this, ListActivity.class));
+                finish();
             }
         });
 

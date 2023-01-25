@@ -15,18 +15,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NutriForagePractice"
         tools:targetApi="31">
-
+        <activity
+            android:name=".ListActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true" />
-
-
-        <activity android:name=".Settings"
-            android:exported="true"/>
-
-        <activity android:name=".Search"
-            android:exported="true"/>
-
+        <activity
+            android:name=".Settings"
+            android:exported="true" />
+        <activity
+            android:name=".Search"
+            android:exported="true" />
         <activity
             android:name=".SplashScreen"
             android:exported="true"
@@ -62,7 +62,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".UserDashboard"
             android:exported="true">
@@ -70,7 +69,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".AllCategories"
             android:exported="false">
@@ -78,22 +76,22 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".CameraFragment"
             android:exported="true" />
+        <activity
+            android:name=".ResetPassword"
+            android:exported="true" />
+        <activity
+            android:name=".ShoppingList"
+            android:exported="true" />
+        <activity
+            android:name=".ListFragment"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileFragment"
+            android:exported="false" />
 
-        <activity android:name=".ResetPassword"
-            android:exported="true"/>
-
-        <activity android:name=".ShoppingList"
-            android:exported="true"/>
-
-        <activity android:name=".ListFragment"
-            android:exported="false"/>
-
-        <activity android:name=".ProfileFragment"
-            android:exported="false"/>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
