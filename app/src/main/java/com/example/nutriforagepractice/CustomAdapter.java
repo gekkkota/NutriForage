@@ -17,6 +17,8 @@ public class CustomAdapter extends RecyclerView.Adapter<ViewHolder> {
     List<Model> modelList;
     Context context;
 
+    ViewHolder viewHolder;
+
     public CustomAdapter(ListActivity listActivity, List<Model> modelList) {
         this.listActivity = listActivity;
         this.modelList = modelList;
@@ -25,11 +27,9 @@ public class CustomAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         //inflate layout
-        ViewGroup viewGroup = null;
-        View itemView = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.model_layout, viewGroup, false);
+        View itemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.model_layout, viewGroup, false);
         ViewHolder viewHolder = new ViewHolder(itemView);
         //handle item clicks here
         viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
@@ -49,17 +49,15 @@ public class CustomAdapter extends RecyclerView.Adapter<ViewHolder> {
             }
         });
 
-        return null;
+        return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder viewholder, int i) {
         //bind views / set data
-        ViewHolder viewHolder = null;
-        int i = 0;
+
         viewHolder.listItem.setText(modelList.get(i).getTile());
         viewHolder.listDescription.setText(modelList.get(i).getDescription());
-
 
     }
 
