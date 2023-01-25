@@ -48,7 +48,7 @@ public class ProfileFragment extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "Log Out", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getApplicationContext(), Settings.class));
+                startActivity(new Intent(getApplicationContext(), SignIn.class));
 
             }
         });

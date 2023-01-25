@@ -12,6 +12,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -46,6 +47,8 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
     LinearLayout contentView;
     RelativeLayout searchBar;
 
+    TextView viewAllCategories;
+
     //Drawer Menu
     DrawerLayout drawerLayout;
     NavigationView navigationViewbar;
@@ -63,10 +66,21 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         //Search Bar
         searchBar = findViewById(R.id.search_bar);
 
-
         navigationView.setSelectedItemId(R.id.nav_home);
 
+        viewAllCategories = findViewById(R.id.view_all_categories);
+
+        viewAllCategories.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), AllCategories.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @SuppressLint("NonConstantResourceId")
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment fragment = null;
@@ -81,12 +95,13 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
                         fragment = new LogFragment();
                         break;
 
+                    case R.id.nav_list:
+                        startActivity(new Intent(getApplicationContext(), ShoppingList.class));
+                        overridePendingTransition(0, 0);
+                        finish();
+
                     case R.id.nav_camera:
                         fragment = new CameraFragment();
-                        break;
-
-                    case R.id.nav_list:
-                        fragment = new ListFragment();
                         break;
 
                     case R.id.nav_profile:
@@ -99,6 +114,8 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
             }
 
         });
+
+
 
         //Hooks
         featuredRecycler = findViewById(R.id.featured_recycler);
@@ -203,7 +220,19 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
             case R.id.drawer_home:
                 startActivity(new Intent(getApplicationContext(),UserDashboard.class));
                 break;
-                
+
+            case R.id.drawer_list:
+                startActivity(new Intent(getApplicationContext(),ShoppingList.class));
+                break;
+
+            case R.id.drawer_profile:
+                startActivity(new Intent(getApplicationContext(),ProfileFragment.class));
+                break;
+
+            case R.id.drawer_search:
+                startActivity(new Intent(getApplicationContext(),Search.class));
+                break;
+
         }
         return true;
     }

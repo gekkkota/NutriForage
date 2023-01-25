@@ -2,11 +2,13 @@ package com.example.nutriforagepractice;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -28,6 +30,8 @@ public class ShoppingList extends AppCompatActivity {
     EditText mItemSL, mDescriptionSL;
     Button mSaveBtnSL;
 
+    ImageView backBtnList;
+
     //progress dialog
     ProgressDialog pd;
 
@@ -38,14 +42,13 @@ public class ShoppingList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_shopping_list);
 
         //actionbar and its title
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Add Data");
+
 
         //initialize views with its xml
+        backBtnList = findViewById(R.id.back_pressed_list);
         mItemSL = findViewById(R.id.itemSL);
         mDescriptionSL = findViewById(R.id.desc_itemSL);
         mSaveBtnSL = findViewById(R.id.saveBtnSL);
@@ -65,6 +68,16 @@ public class ShoppingList extends AppCompatActivity {
                 String description = mDescriptionSL.getText().toString().trim();
                 //function call to upload data
                 uploadData(title, description);
+            }
+        });
+
+        backBtnList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), UserDashboard.class);
+                startActivity(intent);
+                finish();
+
             }
         });
     }
