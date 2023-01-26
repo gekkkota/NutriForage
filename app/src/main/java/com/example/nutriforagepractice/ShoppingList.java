@@ -39,6 +39,8 @@ public class ShoppingList extends AppCompatActivity {
     //Firestore instance
     FirebaseFirestore db;
 
+    String pId, pTitle, pDescription;
+
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -57,6 +59,25 @@ public class ShoppingList extends AppCompatActivity {
         mSaveBtnSL = findViewById(R.id.saveBtnSL);
         mListBtnSL = findViewById(R.id.listBtnSL);
 
+        Bundle bundle = getIntent().getExtras();
+        if (bundle !=null){
+            //Update data
+            //actionBar.setTitle("Update");
+            mSaveBtnSL.setText("Update");
+            //get data
+            pId = bundle.getString("pId");
+            pTitle = bundle.getString("pTitle");
+            pDescription = bundle.getString("pDescription");
+            //set data
+            mItemSL.setText(pTitle);
+            mDescriptionSL.setText(pDescription);
+        }
+        else {
+            //New Data
+            //actionBar.setTitle("Add Data")
+            mSaveBtnSL.setText("Save");
+        }
+
         //progress dialog
         pd = new ProgressDialog(this);
 
@@ -67,11 +88,26 @@ public class ShoppingList extends AppCompatActivity {
         mSaveBtnSL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //input data
-                String title = mItemSL.getText().toString().trim();
-                String description = mDescriptionSL.getText().toString().trim();
-                //function call to upload data
-                uploadData(title, description);
+                Bundle bundle1 = getIntent().getExtras();
+                if (bundle != null){
+                    //updating
+                    //input data
+                    String id = pId;
+                    String title = mItemSL.getText().toString().trim();
+                    String description = mDescriptionSL.getText().toString().trim();
+                    //function call to update data
+                    updateData(id, title, description);
+                    
+                }
+                else {
+                    //adding new
+                    //input data
+                    String title = mItemSL.getText().toString().trim();
+                    String description = mDescriptionSL.getText().toString().trim();
+                    //function call to upload data
+                    uploadData(title, description);
+                }
+
             }
         });
 
@@ -93,6 +129,35 @@ public class ShoppingList extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void updateData(String id, String title, String description) {
+
+        //set title of progress bar
+        pd.setTitle("Updating Item...");
+        //show progress bar when user click save button
+        pd.show();
+
+        db.collection("Documents").document(id)
+                .update("title", title, "description", description)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        //called when updated successfully
+                        pd.dismiss();
+                        Toast.makeText(ShoppingList.this, "Updated...", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        //called when there is any error
+                        pd.dismiss();
+                        //get and show error message
+                        Toast.makeText(ShoppingList.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
     }
 
 

@@ -1,6 +1,9 @@
 package com.example.nutriforagepractice;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,6 +50,37 @@ public class CustomAdapter extends RecyclerView.Adapter<ViewHolder> {
             @Override
             public void onItemLongClick(View view, int position) {
                 //this will be called when user long clicks item
+
+                //Creating AlertDialog
+                AlertDialog.Builder builder = new AlertDialog.Builder(listActivity);
+                //options to display in dialog
+                String[] options = {"Update", "Delete"};
+                builder.setItems(options, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (which == 0) {
+                            //update is clicked
+                            //get data
+                            String id = modelList.get(position).getId();
+                            String title = modelList.get(position).getTile();
+                            String description = modelList.get(position).getDescription();
+
+                            //intent to start activity
+                            Intent intent = new Intent(listActivity, ShoppingList.class);
+                            //put data in intent
+                            intent.putExtra("pId", id);
+                            intent.putExtra("pTitle", title);
+                            intent.putExtra("pDescription", description);
+                            //start activity
+                            listActivity.startActivity(intent);
+
+                        }
+                        if (which == 1){
+                            // delete is clicked
+                        }
+
+                    }
+                }).create().show();
             }
         });
 
@@ -57,8 +91,8 @@ public class CustomAdapter extends RecyclerView.Adapter<ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder viewholder, int i) {
         //bind views / set data
 
-        viewHolder.mlistItem.setText(modelList.get(i).getTile());
-        viewHolder.mlistDescription.setText(modelList.get(i).getDescription());
+        //viewHolder.mlistItem.setText(modelList.get(i).getTile());
+        //viewHolder.mlistDescription.setText(modelList.get(i).getDescription());
 
     }
 
