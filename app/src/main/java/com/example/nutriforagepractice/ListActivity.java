@@ -84,6 +84,7 @@ public class ListActivity extends AppCompatActivity {
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        modelList.clear();
                         //called when data is retrieved
                         pd.dismiss();
                         //show data
@@ -109,4 +110,34 @@ public class ListActivity extends AppCompatActivity {
                     }
                 });
     }
+
+    public void deleteData(int index){
+        //set title of progress dialog
+        pd.setTitle("Deleting Item...");
+        //show progress dialog
+        pd.show();
+
+        db.collection("Documents").document(modelList.get(index).getId())
+                .delete()
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+
+                        //called when deleted successfully
+                        Toast.makeText(ListActivity.this, "Deleted", Toast.LENGTH_SHORT).show();
+                        //update data
+                        showData();
+
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        //called when there is any error
+                        //get and show error message
+                        Toast.makeText(ListActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
 }

@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -77,6 +78,7 @@ public class CustomAdapter extends RecyclerView.Adapter<ViewHolder> {
                         }
                         if (which == 1){
                             // delete is clicked
+                            listActivity.deleteData(position);
                         }
 
                     }
@@ -90,6 +92,10 @@ public class CustomAdapter extends RecyclerView.Adapter<ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewholder, int i) {
         //bind views / set data
+
+        //TextView viewHolder1 = viewHolder.mlistItem;
+        //TextView viewHolder2 = viewHolder.mlistDescription;
+
 
         //viewHolder.mlistItem.setText(modelList.get(i).getTile());
         //viewHolder.mlistDescription.setText(modelList.get(i).getDescription());
