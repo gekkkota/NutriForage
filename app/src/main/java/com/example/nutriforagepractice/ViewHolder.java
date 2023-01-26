@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class ViewHolder extends RecyclerView.ViewHolder {
 
-    TextView listItem, listDescription;
+    TextView mlistItem, mlistDescription;
     View mView;
 
     public ViewHolder(@NonNull View itemView) {
@@ -17,26 +17,25 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         mView = itemView;
 
         //item click
-        itemView.setOnClickListener(new View.OnClickListener(){
+        itemView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                mClickListener.onItemClick(v, getAdapterPosition());
+            public void onClick(View view) {
+                mClickListener.onItemClick(view, getAdapterPosition());
             }
-
         });
 
         //item long click listener
         itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public boolean onLongClick(View v) {
-                mClickListener.onItemLongClick(v,getAdapterPosition());
+            public boolean onLongClick(View view) {
+                mClickListener.onItemLongClick(view, getAdapterPosition());
                 return true;
             }
         });
 
         //initialize views with model_layout.xml
-        listItem = itemView.findViewById(R.id.listItem);
-        listDescription = itemView.findViewById(R.id.listDescription);
+        mlistItem = itemView.findViewById(R.id.listItem);
+        mlistDescription = itemView.findViewById(R.id.listDescription);
 
     }
 

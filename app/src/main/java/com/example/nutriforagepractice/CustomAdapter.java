@@ -29,7 +29,8 @@ public class CustomAdapter extends RecyclerView.Adapter<ViewHolder> {
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         //inflate layout
-        View itemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.model_layout, viewGroup, false);
+        View itemView = LayoutInflater.from(viewGroup.getContext())
+                .inflate(R.layout.model_layout, viewGroup, false);
         ViewHolder viewHolder = new ViewHolder(itemView);
         //handle item clicks here
         viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
@@ -56,8 +57,8 @@ public class CustomAdapter extends RecyclerView.Adapter<ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder viewholder, int i) {
         //bind views / set data
 
-        viewHolder.listItem.setText(modelList.get(i).getTile());
-        viewHolder.listDescription.setText(modelList.get(i).getDescription());
+        viewHolder.mlistItem.setText(modelList.get(i).getTile());
+        viewHolder.mlistDescription.setText(modelList.get(i).getDescription());
 
     }
 

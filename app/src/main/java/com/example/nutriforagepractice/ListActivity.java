@@ -44,7 +44,7 @@ public class ListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-        //init firestore
+        //init fire-store
         db = FirebaseFirestore.getInstance();
 
         //initialize views

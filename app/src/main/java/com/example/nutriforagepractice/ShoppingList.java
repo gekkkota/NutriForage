@@ -39,6 +39,7 @@ public class ShoppingList extends AppCompatActivity {
     //Firestore instance
     FirebaseFirestore db;
 
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,7 @@ public class ShoppingList extends AppCompatActivity {
         setContentView(R.layout.activity_shopping_list);
 
         //actionbar and its title
+
 
 
         //initialize views with its xml
@@ -96,10 +98,10 @@ public class ShoppingList extends AppCompatActivity {
 
     private void uploadData(String title, String description) {
         //set title of progress bar
-        pd.setTitle("Adding Data to Firestore");
+        pd.setTitle("Adding Item to your List");
         //show progress bar when user click save button
         pd.show();
-        //rando id for each data to be stored
+        //random id for each data to be stored
         String id= UUID.randomUUID().toString();
 
         Map<String, Object> doc=new HashMap<>();
@@ -108,7 +110,7 @@ public class ShoppingList extends AppCompatActivity {
         doc.put("description", description);
 
         //add this data
-        db.collection("Documents").document().set(doc)
+        db.collection("Documents").document(id).set(doc)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
