@@ -95,22 +95,28 @@ public class SignIn extends AppCompatActivity {
                     return;
                 }
 
-                mAuth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                progressBar.setVisibility(View.GONE);
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(SignIn.this, "Login Successful.", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(getApplicationContext(), UserDashboard.class);
-                                    startActivity(intent);
-                                    finish();
-                                } else {
-                                    Toast.makeText(SignIn.this, "Authentication failed.",
-                                            Toast.LENGTH_SHORT).show();
-                                }
+                mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        progressBar.setVisibility(View.GONE);
+                        if (task.isSuccessful()) {
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+                            if (user.isEmailVerified()){
+                                Toast.makeText(SignIn.this, "Login Successful.", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(getApplicationContext(), UserDashboard.class);
+                                startActivity(intent);
+                                finish();
+                            } else {
+                                user.sendEmailVerification();
+                                Toast.makeText(SignIn.this, "Please check your email to verify your account.", Toast.LENGTH_LONG).show();
                             }
-                        });
+                        } else {
+                            Toast.makeText(SignIn.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
             }
         });
     }
