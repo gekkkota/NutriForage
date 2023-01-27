@@ -1,62 +1,82 @@
 package com.example.nutriforagepractice;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 
+
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 
 
 import android.provider.MediaStore;
-
-import android.view.View;
-
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
-import android.view.ViewGroup;
+import android.Manifest;
 
 
-public class CameraFragment extends Fragment {
-    public static final String EXTRA_INFO = "default";
-    private Button btnpicture;
-    private ImageView imageView;
-    private static final int Image_Capture_Code = 1;
-    private static final int RESULT_OK = -1;
-    private static final int RESULT_CANCELED = 0;
 
-    @Nullable
+public class CameraFragment extends AppCompatActivity{
+    private static final int CAMERA_PERM_CODE = 10001, CAMERA_REQUEST_CODE = 100  ;
+    ImageView imageView;
+    Button cameraBtn;
+
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_camera, container, false);
-        btnpicture = (Button) view.findViewById(R.id.btncamera_id);
-        imageView = (ImageView) view.findViewById(R.id.imageview1);
-        btnpicture.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent cInt = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(cInt,Image_Capture_Code);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_camera);
+
+        imageView = findViewById(R.id.imageview1);
+        cameraBtn = findViewById(R.id.btncamera_id);
+
+        cameraBtn.setOnClickListener(view -> askCameraPermissions());
+
+    }
+
+    private void askCameraPermissions() {
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.CAMERA}, CAMERA_PERM_CODE);
+        }
+        else {
+            openCamera();
+
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult (int requestCode, @NonNull String[] permissions,@NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == CAMERA_PERM_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                openCamera();
+
+            } else {
+                Toast.makeText(this, "Camera permission is Required to use Camera", Toast.LENGTH_SHORT).show();
+
             }
-        });
+        }
+    }
 
-        return view;
-
+    private void openCamera() {
+        Toast.makeText(this, "Camera Opened", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent( MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(intent, CAMERA_REQUEST_CODE);
 
     }
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == Image_Capture_Code) {
-            if (resultCode == RESULT_OK) {
-                Bitmap bp = (Bitmap) data.getExtras().get("data");
-                imageView.setImageBitmap(bp);
-            }
-            else if (resultCode == RESULT_CANCELED) {
-                Toast.makeText(getActivity(), "Cancelled", Toast.LENGTH_LONG).show();
-            }
-
+    protected  void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == CAMERA_REQUEST_CODE) {
+            assert data != null;
+            Bitmap image = (Bitmap) data.getExtras().get("data");
+            imageView.setImageBitmap(image);
 
         }
-}
+    }
 }

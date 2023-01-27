@@ -101,8 +101,9 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
                         finish();
 
                     case R.id.nav_camera:
-                        fragment = new CameraFragment();
-                        break;
+                        startActivity(new Intent(getApplicationContext(), CameraFragment.class));
+                        overridePendingTransition(0, 0);
+                        finish();
 
                     case R.id.nav_profile:
                         startActivity(new Intent(getApplicationContext(), ProfileFragment.class));
