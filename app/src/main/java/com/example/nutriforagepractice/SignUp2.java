@@ -86,7 +86,7 @@ public class SignUp2 extends AppCompatActivity {
                                                 public void onComplete(@NonNull Task<Void> task) {
                                                     if(task.isSuccessful()){
                                                         Toast.makeText(SignUp2.this, "Sign Up Successful.",
-                                                                Toast.LENGTH_SHORT).show();
+                                                                Toast.LENGTH_LONG).show();
                                                         progressBar.setVisibility(View.GONE);
 
                                                         Intent intent = new Intent(getApplicationContext(), SignIn.class);
