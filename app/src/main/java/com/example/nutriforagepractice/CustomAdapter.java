@@ -23,6 +23,8 @@ public class CustomAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     ViewHolder viewHolder;
 
+
+
     public CustomAdapter(ListActivity listActivity, List<Model> modelList) {
         this.listActivity = listActivity;
         this.modelList = modelList;
