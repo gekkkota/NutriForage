@@ -62,21 +62,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/bottom_navigation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_margin="10dp"
-                android:background="@drawable/round_corner_green"
-                android:elevation="2dp"
-                app:itemIconSize="30dp"
-                app:itemIconTint="@drawable/item_selector"
-                app:itemRippleColor="@android:color/transparent"
-                app:labelVisibilityMode="unlabeled"
-                app:menu="@menu/item_menu" />
-
-
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">

@@ -15,6 +15,7 @@ import androidx.core.content.ContextCompat;
 
 
 import android.provider.MediaStore;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -24,7 +25,7 @@ import android.Manifest;
 
 public class CameraFragment extends AppCompatActivity{
     private static final int CAMERA_PERM_CODE = 10001, CAMERA_REQUEST_CODE = 100  ;
-    ImageView imageView;
+    ImageView imageView, backBtnCamera;
     Button cameraBtn;
 
     @Override
@@ -34,10 +35,23 @@ public class CameraFragment extends AppCompatActivity{
 
         imageView = findViewById(R.id.imageview1);
         cameraBtn = findViewById(R.id.btncamera_id);
+        backBtnCamera= findViewById(R.id.back_pressed_camera);
 
         cameraBtn.setOnClickListener(view -> askCameraPermissions());
 
+        backBtnCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), UserDashboard.class);
+                startActivity(intent);
+                finish();
+
+            }
+        });
     }
+
+
+
 
     private void askCameraPermissions() {
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){

@@ -29,7 +29,7 @@ import com.example.nutriforagepractice.HelperClasses.HomeAdapter.FoodAdapter;
 import com.example.nutriforagepractice.HelperClasses.HomeAdapter.FoodHelperClass;
 import com.example.nutriforagepractice.HelperClasses.HomeAdapter.MostViewedAdapter;
 import com.example.nutriforagepractice.HelperClasses.HomeAdapter.MostViewedHelperClass;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -40,7 +40,7 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
     //Variables
     static final float END_SCALE = 0.7f;
 
-    BottomNavigationView navigationView;
+
     RecyclerView featuredRecycler, mostViewedRecycler, foodRecycler;
     RecyclerView.Adapter adapter;
     ImageView menuIcon;
@@ -62,11 +62,11 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_user_dashboard);
 
-        navigationView = findViewById(R.id.bottom_navigation);
+
         //Search Bar
         searchBar = findViewById(R.id.search_bar);
 
-        navigationView.setSelectedItemId(R.id.nav_home);
+
 
         viewAllCategories = findViewById(R.id.view_all_categories);
 
@@ -79,42 +79,7 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
             }
         });
 
-        navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @SuppressLint("NonConstantResourceId")
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Fragment fragment = null;
-                switch (item.getItemId()) {
 
-                    case R.id.nav_home:
-                        startActivity(new Intent(getApplicationContext(), UserDashboard.class));
-                        overridePendingTransition(0, 0);
-                        finish();
-
-                    case R.id.nav_log:
-                        fragment = new LogFragment();
-                        break;
-
-                    case R.id.nav_list:
-                        startActivity(new Intent(getApplicationContext(), ShoppingList.class));
-                        overridePendingTransition(0, 0);
-                        finish();
-
-                    case R.id.nav_camera:
-                        startActivity(new Intent(getApplicationContext(), CameraFragment.class));
-                        overridePendingTransition(0, 0);
-                        finish();
-
-                    case R.id.nav_profile:
-                        startActivity(new Intent(getApplicationContext(), ProfileFragment.class));
-                        overridePendingTransition(0, 0);
-                        finish();
-                }
-                getSupportFragmentManager().beginTransaction().replace(R.id.body_container, fragment).commit();
-                return true;
-            }
-
-        });
 
 
 
@@ -226,6 +191,10 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
                 startActivity(new Intent(getApplicationContext(),ShoppingList.class));
                 break;
 
+            case R.id.drawer_camera:
+                startActivity(new Intent(getApplicationContext(),CameraFragment.class));
+                break;
+
             case R.id.drawer_profile:
                 startActivity(new Intent(getApplicationContext(),ProfileFragment.class));
                 break;
@@ -234,6 +203,13 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
                 startActivity(new Intent(getApplicationContext(),Search.class));
                 break;
 
+            case R.id.drawer_login:
+                startActivity(new Intent(getApplicationContext(),SignIn.class));
+                break;
+
+            case R.id.drawer_logout:
+                startActivity(new Intent(getApplicationContext(),SignIn.class));
+                break;
         }
         return true;
     }
