@@ -204,8 +204,6 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
                 break;
 
             case R.id.drawer_login:
-                startActivity(new Intent(getApplicationContext(),SignIn.class));
-                break;
 
             case R.id.drawer_logout:
                 startActivity(new Intent(getApplicationContext(),SignIn.class));
