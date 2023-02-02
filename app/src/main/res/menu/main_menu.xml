@@ -19,6 +19,12 @@
             android:title="ALL CATEGORIES" />
 
         <item
+            android:id="@+id/drawer_recipes"
+            android:icon="@drawable/recipe_ic"
+            android:title="RECIPE BOOK" />
+
+
+        <item
             android:id="@+id/drawer_log"
             android:icon="@drawable/log_icon"
             android:title="FOOD LOG" />

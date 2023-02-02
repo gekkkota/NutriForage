@@ -47,7 +47,7 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
     LinearLayout contentView;
     RelativeLayout searchBar;
 
-    TextView viewAllCategories;
+    TextView viewAllCategories, viewAllRecipes;
 
     //Drawer Menu
     DrawerLayout drawerLayout;
@@ -69,11 +69,21 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
 
 
         viewAllCategories = findViewById(R.id.view_all_categories);
+        viewAllRecipes= findViewById(R.id.view_all_recipes);
 
         viewAllCategories.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), AllCategories.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        viewAllRecipes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), AllRecipes.class);
                 startActivity(intent);
                 finish();
             }
@@ -183,6 +193,10 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
                 startActivity(new Intent(getApplicationContext(),AllCategories.class));
                 break;
 
+            case R.id.drawer_recipes:
+                startActivity(new Intent(getApplicationContext(),AllRecipes.class));
+                break;
+
             case R.id.drawer_home:
                 startActivity(new Intent(getApplicationContext(),UserDashboard.class));
                 break;
@@ -242,9 +256,9 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
 
         ArrayList<MostViewedHelperClass> mostViewedRecipes = new ArrayList<>();
 
-        mostViewedRecipes.add(new MostViewedHelperClass(R.drawable.adobo_img, "Healthier Chicken Adobo Recipe", "Authentic chicken adobo is usually made with chicken thighs and legs, served over white rice."));
-        mostViewedRecipes.add(new MostViewedHelperClass(R.drawable.gising_img, "Gising-gising Recipe", "A ground pork and green bean dish cooked in coconut milk. Shrimp paste (bagoong) is used to enhance the flavor."));
-        mostViewedRecipes.add(new MostViewedHelperClass(R.drawable.tofu_tinola_img, "Tofu Tinola Recipe", "Savoury ginger-based broth soup, filled with sauteed tofu, green papaya and nutritious chilli pepper leaves."));
+        mostViewedRecipes.add(new MostViewedHelperClass(R.drawable.r_lemon_garlic_shrimp, "Lemon-Garlic Shrimp and Grits", "Shrimp and grits is an iconic Southern dish and easy to make at home."));
+        mostViewedRecipes.add(new MostViewedHelperClass(R.drawable.r_bacon_egg_cups, "Whole30 Bacon and Egg Cups", "Everything you've ever craved from a diner breakfast is present in this Whole30-friendly recipe, which is easy to prepare for a crowd."));
+        mostViewedRecipes.add(new MostViewedHelperClass(R.drawable.r_pork_tacos, "Slow-Cooker Pork Tacos", "It's impossible to resist flavorful and tender pork shoulder after it's been slowly simmered in chicken broth and aromatic spices."));
 
 
         adapter = new MostViewedAdapter(mostViewedRecipes);

@@ -39,5 +39,8 @@
     <!-- Recipes!!! -->
 
     <string name="chicken_adobo_text">Authentic chicken adobo is usually made with chicken thighs and legs, served over white rice.</string>
+    <string name="recipeName">Recipe Name</string>
+    <string name="ingredients">Ingredients</string>
+
 
 </resources>
