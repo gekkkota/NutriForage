@@ -189,6 +189,10 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
                 startActivity(new Intent(getApplicationContext(),AllRecipes.class));
                 break;
 
+            case R.id.drawer_log:
+                startActivity(new Intent(getApplicationContext(),FoodLogging.class));
+                break;
+
             case R.id.drawer_home:
                 startActivity(new Intent(getApplicationContext(),UserDashboard.class));
                 break;
@@ -196,6 +200,7 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
             case R.id.drawer_list:
                 startActivity(new Intent(getApplicationContext(),ShoppingList.class));
                 break;
+
 
             case R.id.drawer_camera:
                 startActivity(new Intent(getApplicationContext(),CameraFragment.class));
