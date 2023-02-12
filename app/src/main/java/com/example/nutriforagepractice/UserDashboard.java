@@ -68,17 +68,10 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
 
 
 
-        viewAllCategories = findViewById(R.id.view_all_categories);
+
         viewAllRecipes= findViewById(R.id.view_all_recipes);
 
-        viewAllCategories.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AllCategories.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+
 
         viewAllRecipes.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,7 +91,7 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
 
         mostViewedRecycler = findViewById(R.id.most_viewed_recycler);
 
-        foodRecycler = findViewById(R.id.food_recycler);
+
 
         menuIcon = findViewById(R.id.menu_icon);
 
@@ -107,7 +100,6 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         //Recycler Views Function Calls
         featuredRecycler();
         mostViewedRecycler();
-        foodRecycler();
 
         //Search Bar
         searchBar.setOnClickListener(new View.OnClickListener() {
@@ -267,25 +259,6 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         GradientDrawable gradient1 = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, new int[]{0xffeff400, 0xffaff600});
 
     }
-    private void foodRecycler() {
-
-        foodRecycler.setHasFixedSize(true);
-        foodRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-
-        ArrayList<FoodHelperClass> foodCategory = new ArrayList<>();
-
-        foodCategory.add(new FoodHelperClass(R.drawable.logo_black, "Vegan Foods", "Authentic chicken adobo is usually made with chicken thighs and legs, or a cut-up whole chicken served over white rice."));
-        foodCategory.add(new FoodHelperClass(R.drawable.meat_food, "Pork Meat Foods", "A ground pork and green bean dish cooked in coconut milk. Shrimp paste (bagoong) is used to enhance the flavor."));
-        foodCategory.add(new FoodHelperClass(R.drawable.chicken_food, "Chciken Meat Foods", "Savoury ginger-based broth soup, filled with sauteed tofu, green papaya and nutritious chilli pepper leaves."));
-
-
-        adapter = new FoodAdapter(foodCategory);
-        foodRecycler.setAdapter(adapter);
-
-        GradientDrawable gradient1 = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, new int[]{0xffeff400, 0xffaff600});
-    }
-
-
 
 
     public void callRetailerScreens(View view) {
