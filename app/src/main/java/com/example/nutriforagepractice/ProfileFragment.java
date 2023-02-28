@@ -108,7 +108,9 @@ public class ProfileFragment extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "Help", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getApplicationContext(), Settings.class));
+                Intent intent = new Intent(getApplicationContext(), HelpCenter.class);
+                startActivity(intent);
+                finish();
 
             }
         });

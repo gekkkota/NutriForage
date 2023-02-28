@@ -59,7 +59,7 @@
             android:exported="true" />
         <activity
             android:name=".Search"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".SignUp2"
             android:exported="false">
@@ -103,6 +103,8 @@
         <activity
             android:name=".ProfileFragment"
             android:exported="false" />
+        <activity android:name=".HelpCenter"
+            android:exported="false"/>
 
         <meta-data
             android:name="preloaded_fonts"
