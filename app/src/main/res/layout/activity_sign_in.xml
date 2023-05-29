@@ -88,8 +88,9 @@
             app:layout_constraintStart_toStartOf="parent" />
     </RelativeLayout>
 
-
-
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
     <ProgressBar
         android:id="@+id/progressBar"
         android:visibility="gone"
@@ -109,14 +110,15 @@
         android:layout_below="@id/input_container"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="178dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="178dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="560dp"
+        android:layout_marginEnd="175dp"
         android:background="@drawable/button_round"
         android:text="➜"
         android:textAllCaps="false"
         android:textSize="20dp"
-        app:backgroundTint="@null" />
+        app:backgroundTint="@null"
+        tools:ignore="NotSibling" />
 
     <TextView
         android:id="@+id/to_reset_password"
@@ -125,14 +127,14 @@
         android:layout_below="@+id/input_container"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="228dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginStart="229dp"
+        android:layout_marginTop="520dp"
+        android:layout_marginEnd="14dp"
         android:layout_marginBottom="10dp"
         android:text="Forgot your password?"
         android:textColor="@color/white"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        tools:ignore="NotSibling" />
 
     <TextView
         android:id="@+id/account_text"
@@ -141,9 +143,9 @@
         android:layout_below="@+id/submit_login"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="90dp"
+        android:layout_marginStart="80dp"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="165dp"
+        android:layout_marginEnd="100dp"
         android:text="Don't have an account?"
         android:textSize="15sp"
         android:textColor="@color/black">
@@ -157,14 +159,17 @@
         android:layout_below="@+id/submit_login"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="250dp"
+        android:layout_marginStart="240dp"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="60dp"
+        android:layout_marginEnd="75dp"
         android:text="Sign Up Here"
         android:textSize="15sp"
         android:textColor="@color/white">
 
     </TextView>
+</RelativeLayout>
+
+
 
 
 </RelativeLayout>
