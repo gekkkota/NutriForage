@@ -14,11 +14,6 @@
             android:title="SEARCH" />
 
         <item
-            android:id="@+id/drawer_category"
-            android:icon="@drawable/category_icon"
-            android:title="ALL CATEGORIES" />
-
-        <item
             android:id="@+id/drawer_recipes"
             android:icon="@drawable/recipe_ic"
             android:title="RECIPE BOOK" />

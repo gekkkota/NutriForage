@@ -6,17 +6,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/qotd_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
-        android:layout_margin="5dp"
-        android:layout_centerInParent="true"
         android:src="@drawable/qotd_1"
-        android:id="@+id/qotd_1"
-        app:shapeAppearanceOverlay="@style/roundimageview"/>
-
-
+        app:shapeAppearanceOverlay="@style/roundimageview" />
 
 
 </RelativeLayout>

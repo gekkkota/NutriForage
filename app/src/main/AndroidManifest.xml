@@ -82,13 +82,6 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".AllCategories"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".CameraFragment"
             android:exported="true" />
         <activity
@@ -97,9 +90,6 @@
         <activity
             android:name=".ShoppingList"
             android:exported="true" />
-        <activity
-            android:name=".ListFragment"
-            android:exported="false" />
         <activity
             android:name=".ProfileFragment"
             android:exported="false" />

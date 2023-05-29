@@ -147,32 +147,12 @@
                                     android:layout_marginBottom="0dp"
                                     android:adjustViewBounds="true"
                                     android:scaleType="fitCenter"
-                                    android:src="@drawable/qotd_1"
+                                    android:src="@drawable/qotd_2"
                                     app:shapeAppearanceOverlay="@style/roundimageview" />
 
                             </RelativeLayout>
 
                         </LinearLayout>
-
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:id="@+id/todays_meal_plan"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginBottom="20dp"
-                            android:text="Today's Meal Plan"
-                            android:textColor="#000000"
-                            android:textSize="18sp"
-                            android:textStyle="bold">
-
-                        </TextView>
 
                     </RelativeLayout>
 
@@ -186,21 +166,6 @@
                             android:layout_height="wrap_content">
 
                         </LinearLayout>
-
-                        <RelativeLayout
-                            android:layout_width="380dp"
-                            android:layout_height="500dp"
-                            android:background="@drawable/bg_default_input">
-
-                            <ImageView
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
-                                android:layout_centerInParent="true"
-                                android:src="@drawable/unknown_icon">
-
-                            </ImageView>
-
-                        </RelativeLayout>
 
                     </RelativeLayout>
 
