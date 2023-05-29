@@ -181,6 +181,7 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         Fragment fragment = null;
         switch (item.getItemId()){
 
+
             case R.id.drawer_recipes:
                 startActivity(new Intent(getApplicationContext(),AllRecipes.class));
                 break;
