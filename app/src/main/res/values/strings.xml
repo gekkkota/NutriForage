@@ -15,7 +15,7 @@
     <string name="settings_select">English</string>
     <string name="settings_notifications">Notifications</string>
     <string name="settings_language">Language</string>
-    <string name="profile_password">********</string>
+    <string name="profile_emailAdd">nutriforage@example.com</string>
     <string name="profile_number">0900-000-0000</string>
     <string name="profile_age">21</string>
     <string name="profile_height">163cm</string>
@@ -26,7 +26,7 @@
     <string name="profile_settings">Settings</string>
     <string name="profile_editprofile">Edit Profile</string>
     <string name="profile_logout">Log Out</string>
-    <string name="profile_password_text">Password</string>
+    <string name="profile_email_text">Email</string>
     <string name="profile_mobile_text">Mobile Number</string>
     <string name="profile_age_text">Age</string>
     <string name="profile_height_text">Height</string>

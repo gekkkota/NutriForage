@@ -73,7 +73,7 @@
                     <LinearLayout
                         android:id="@+id/linearLayout"
                         android:layout_width="match_parent"
-                        android:layout_height="420dp"
+                        android:layout_height="320dp"
                         android:layout_marginStart="24dp"
                         android:layout_marginTop="50dp"
                         android:layout_marginEnd="24dp"
@@ -87,80 +87,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView_email">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:layout_marginTop="30dp"
-                            android:orientation="horizontal">
 
-                            <TextView
-                                android:id="@+id/textView_password"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/profile_password_text"
-                                android:textColor="@color/black"
-                                android:textSize="18sp" />
-
-                            <TextView
-                                android:id="@+id/profile_pw"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/profile_password"
-                                android:textAlignment="viewEnd"
-                                android:textColor="@color/black"
-                                android:textSize="18sp" />
-
-                        </LinearLayout>
-
-                        <View
-                            android:id="@+id/divider"
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginEnd="10dp"
-                            android:layout_marginBottom="5dp"
-                            android:background="#F1F2EB" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/textView_number"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/profile_mobile_text"
-                                android:textColor="@color/black"
-                                android:textSize="18sp" />
-
-                            <TextView
-                                android:id="@+id/profile_mobile"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/profile_number"
-                                android:textAlignment="viewEnd"
-                                android:textColor="@color/black"
-                                android:textSize="18sp" />
-
-                        </LinearLayout>
-
-                        <View
-                            android:id="@+id/divider2"
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginEnd="10dp"
-                            android:layout_marginBottom="5dp"
-                            android:background="#F1F2EB" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
