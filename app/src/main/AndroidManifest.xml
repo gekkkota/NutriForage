@@ -15,18 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NutriForagePractice"
         tools:targetApi="31">
-        <activity
-            android:name=".FoodLogActivity"
-            android:exported="false" />
-        <activity
-            android:name=".FoodLogging"
-            android:exported="false" />
-        <activity
-            android:name=".AllRecipes"
-            android:exported="false" />
-        <activity
-            android:name=".RecipeActivity"
-            android:exported="false" />
+
         <activity
             android:name=".UserDashboard"
             android:exported="true"
@@ -42,18 +31,27 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".SplashScreen"
+            android:exported="true" />
+        <activity
+            android:name=".FoodLogActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FoodLogging"
+            android:exported="false" />
+        <activity
+            android:name=".AllRecipes"
+            android:exported="false" />
+        <activity
+            android:name=".RecipeActivity"
+            android:exported="false" />
+        <activity
             android:name=".ListActivity"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity
-            android:name=".SplashScreen"
-            android:exported="true" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true" />
         <activity
             android:name=".Settings"
             android:exported="true" />
