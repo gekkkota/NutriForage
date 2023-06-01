@@ -26,28 +26,9 @@
             app:backgroundTint="@null"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.023"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.949" />
-
-        <Button
-            android:id="@+id/btncamera_id2"
-            android:layout_width="182dp"
-            android:layout_height="65dp"
-            android:layout_marginTop="50dp"
-            android:background="@drawable/button_round"
-            android:gravity="center"
-            android:text="SELECT FROM GALLERY"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            app:backgroundTint="@null"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.948" />
+            app:layout_constraintVertical_bias="0.946" />
 
         <ImageView
             android:id="@+id/imageview1"
@@ -63,7 +44,7 @@
             android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="136dp"
+            android:layout_marginBottom="160dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

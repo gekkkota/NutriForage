@@ -63,7 +63,7 @@ public class CameraFragment extends AppCompatActivity{
 
         imageView = findViewById(R.id.imageview1);
         cameraBtn = findViewById(R.id.btncamera_id);
-        galleryBtn = findViewById(R.id.btncamera_id2);
+        //galleryBtn = findViewById(R.id.btncamera_id2);
         backBtnCamera= findViewById(R.id.back_pressed_camera);
         result = findViewById(R.id.textView6);
 
@@ -86,13 +86,13 @@ public class CameraFragment extends AppCompatActivity{
             }
         });
 
-        galleryBtn.setOnClickListener(new View.OnClickListener() {
+        /*galleryBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(galleryIntent, 1);
             }
-        });
+        });*/
 
 
 
