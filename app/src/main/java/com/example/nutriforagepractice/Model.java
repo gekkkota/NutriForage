@@ -1,7 +1,12 @@
 package com.example.nutriforagepractice;
 
+import android.content.Context;
+
+import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
+
 public class Model {
     String id, tile, description;
+    private Context applicationContext;
 
     public Model() {
     }
@@ -11,6 +16,9 @@ public class Model {
         this.tile = tile;
         this.description = description;
     }
+
+
+
 
     public String getId() {
         return id;
@@ -35,4 +43,7 @@ public class Model {
     public void setDescription(String description) {
         this.description = description;
     }
+
+
+
 }
