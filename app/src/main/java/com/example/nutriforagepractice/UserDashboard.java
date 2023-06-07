@@ -45,7 +45,6 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
     RecyclerView.Adapter adapter;
     ImageView menuIcon;
     LinearLayout contentView;
-    RelativeLayout searchBar;
 
     TextView viewAllCategories, viewAllRecipes;
 
@@ -64,7 +63,6 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
 
 
         //Search Bar
-        searchBar = findViewById(R.id.search_bar);
 
 
 
@@ -102,13 +100,7 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         mostViewedRecycler();
 
         //Search Bar
-        searchBar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(UserDashboard.this, "Search", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(UserDashboard.this, Search.class));
-            }
-        });
+
 
 
 
@@ -205,10 +197,6 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
 
             case R.id.drawer_profile:
                 startActivity(new Intent(getApplicationContext(),ProfileFragment.class));
-                break;
-
-            case R.id.drawer_search:
-                startActivity(new Intent(getApplicationContext(),Search.class));
                 break;
 
             case R.id.drawer_login:

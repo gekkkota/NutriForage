@@ -8,10 +8,6 @@
             android:icon="@drawable/home_icon"
             android:title="HOME" />
 
-        <item
-            android:id="@+id/drawer_search"
-            android:icon="@drawable/search_icon"
-            android:title="SEARCH" />
 
         <item
             android:id="@+id/drawer_recipes"
@@ -61,29 +57,5 @@
 
     </item>
 
-    <item android:title="Communicate">
-
-        <menu>
-            <group android:checkableBehavior="none">
-
-                <item
-
-                    android:id="@+id/drawer_share"
-                    android:icon="@drawable/share_icon"
-                    android:title="SHARE" />
-
-                <item
-
-                    android:id="@+id/drawer_rate"
-                    android:icon="@drawable/rate_icon"
-                    android:title="RATE" />
-
-            </group>
-
 
         </menu>
-
-
-    </item>
-
-</menu>
