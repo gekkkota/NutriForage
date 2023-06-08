@@ -58,32 +58,40 @@ public class ProfileFragment extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         reference = database.getReference("Users");
         user = mAuth.getCurrentUser();
-        userID = user.getUid();
+        if (user != null) {
+            userID = user.getUid();
 
-        reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Users userProfile = snapshot.getValue(Users.class);
+            reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    Users userProfile = snapshot.getValue(Users.class);
 
-                age = userProfile.age;
-                fullName = userProfile.fullname;
-                height = userProfile.height;
-                weight = userProfile.weight;
+                    age = userProfile.age;
+                    fullName = userProfile.fullname;
+                    height = userProfile.height;
+                    weight = userProfile.weight;
 
-                disp_email.setText(user.getEmail());
-                disp_age.setText(age);
-                disp_height.setText(height);
-                disp_weight.setText(weight);
-                disp_name.setText(fullName);
+                    disp_email.setText(user.getEmail());
+                    disp_age.setText(age);
+                    disp_height.setText(height);
+                    disp_weight.setText(weight);
+                    disp_name.setText(fullName);
 
-            }
+                }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(ProfileFragment.this, "Something went wrong!", Toast.LENGTH_LONG).show();
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(ProfileFragment.this, "Something went wrong!", Toast.LENGTH_LONG).show();
 
-            }
-        });
+                }
+            });
+        } else {
+            Toast.makeText(ProfileFragment.this, "Please login first before accessing this page!", Toast.LENGTH_LONG).show();
+            startActivity(new Intent(getApplicationContext(), SignIn.class));
+        }
+
+
+
 
         backBtnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
