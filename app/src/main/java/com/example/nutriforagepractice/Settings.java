@@ -32,11 +32,11 @@ public class Settings extends AppCompatActivity {
 
         autoCompleteTextView.setAdapter(adapter);
 
-        switchCompat = (SwitchCompat) findViewById(R.id.toggle_switch);
+        /*switchCompat = (SwitchCompat) findViewById(R.id.toggle_switch);*/
 
         editProfile = findViewById(R.id.edit_profile);
 
-        switchCompat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        /*switchCompat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(b){
@@ -47,7 +47,7 @@ public class Settings extends AppCompatActivity {
                 }
 
             }
-        });
+        });*/
 
 
 
