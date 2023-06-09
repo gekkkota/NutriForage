@@ -15,7 +15,7 @@ import androidx.appcompat.widget.SwitchCompat;
 
 public class Settings extends AppCompatActivity {
 
-    String[] languages = {"English", "Language1", "Language2"};
+    String[] languages = {"English"};
     AutoCompleteTextView autoCompleteTextView;
     ArrayAdapter<String> adapter;
     SwitchCompat switchCompat;
